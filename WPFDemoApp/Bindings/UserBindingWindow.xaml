@@ -1,0 +1,96 @@
+﻿<Window x:Class="WPFDemoApp.Bindings.UserBindingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDemoApp.Bindings"
+        mc:Ignorable="d"
+        Title="UserBindingWindow" Height="500" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" ></RowDefinition>
+            <RowDefinition Height="4*" ></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <DataTemplate x:Key="UserTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding UserName}" 
+                               Style="{StaticResource LDisplayTextBlock}"
+                               ></TextBlock>
+                    <TextBlock Text="{Binding Age}" 
+                               Style="{StaticResource LDisplayTextBlock}"
+                               ></TextBlock>
+                    <TextBlock Text="{Binding FavColor}" 
+                               Style="{StaticResource LDisplayTextBlock}"
+                               ></TextBlock>
+                    <Rectangle Height=" 50" Width="50"
+                               
+                               Fill="{Binding FavColor}"></Rectangle>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <StackPanel Grid.Row="0">
+
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0" HorizontalAlignment="Center">
+                <TextBlock Text="User Name : " Height="30" Width="120" Margin="10,0,0,0" TextAlignment="Right"></TextBlock>
+                <TextBox Height="30" Width="120" Margin="10,0,0,0" x:Name="txtUserName"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0" HorizontalAlignment="Center">
+                <TextBlock Text="Age : " Height="30" Width="120" Margin="10,0,0,0" TextAlignment="Right"></TextBlock>
+                <TextBox Height="30" Width="120" Margin="10,0,0,0" x:Name="txtAge"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0" HorizontalAlignment="Center">
+                <TextBlock Text="Fav Color : " Height="30" Width="120" Margin="10,0,0,0" TextAlignment="Right"></TextBlock>
+                <TextBox Height="30" Width="120" Margin="10,0,0,0" x:Name="txtFavColor"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0" HorizontalAlignment="Center">
+                 <Button Height="30" Width="120" Margin="10,0,0,0" Content="Add User" x:Name="btnAdd" 
+                         Click="btnAdd_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+
+        <!--<ListView Grid.Row="1" x:Name="lstvwDetails">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="User Name"  Width="100"/>
+                    <GridViewColumn Header="Age"  Width="80" />
+                    <GridViewColumn Header="Fav Color" Width="100"  />
+                   
+                </GridView>
+            </ListView.View>
+            --><!--<StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource BlackBorder}">
+                    <TextBlock  Style="{StaticResource LDisplayTextBlock}" Margin="10"></TextBlock>
+                </Border>
+                <Border Style="{StaticResource BlackBorder}">
+                    <TextBlock  Style="{StaticResource LDisplayTextBlock}" Margin="10"></TextBlock>
+                </Border>
+                <Border Style="{StaticResource BlackBorder}">
+                    <TextBlock  Style="{StaticResource LDisplayTextBlock}"
+                                   TextAlignment="Center" Margin="10"></TextBlock>
+                </Border>
+            </StackPanel>--><!--
+        </ListView>-->
+
+        <ListBox Grid.Row="1" Margin="2" MinHeight="120" ItemsSource="{Binding}" 
+                 ItemTemplate="{StaticResource UserTemplate}"
+                 IsSynchronizedWithCurrentItem="True">
+            
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" >
+            <TextBlock Text="User Name : " Height="30" Width="80" TextAlignment="Right"></TextBlock>
+            <TextBox Height="30" Width="120"  x:Name="txtUserName1"
+                     Text="{Binding UserName, Mode=TwoWay}"></TextBox>
+            <TextBlock Text="Age : " Height="30" Width="40"  TextAlignment="Right" Margin="10,0,0,0" ></TextBlock>
+            <TextBox Height="30" Width="120"  x:Name="txtAge1"
+                        Text="{Binding Age, Mode=TwoWay}"></TextBox>
+            <TextBlock Text="Fav Color : " Height="30" Width="80"  TextAlignment="Right" Margin="10,0,0,0" ></TextBlock>
+            <TextBox Height="30" Width="120"  x:Name="txtFavColor1"
+                        Text="{Binding FavColor, Mode=TwoWay}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

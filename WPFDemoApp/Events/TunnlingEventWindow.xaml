@@ -1,0 +1,17 @@
+﻿<Window x:Class="WPFDemoApp.Events.TunnlingEventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDemoApp.Events"
+        mc:Ignorable="d"
+        Title="TunnlingEventWindow" Height="300" Width="300">
+    <StackPanel x:Name="RootStack">
+        <StackPanel x:Name="InnserStack">
+            <Button x:Name="Button1" Height="40" Width="100">
+                <!--<CheckBox Content="Check" x:Name="CheckBox1"></CheckBox>-->
+            </Button>
+        </StackPanel>
+
+    </StackPanel>
+</Window>
